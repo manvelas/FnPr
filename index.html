@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        canvas {
+            display: block;
+            margin: 20 auto;
+        }
+
+        div {
+            display: inline-block;
+        }
+
+        h1 {
+            padding: 20px;
+            text-align: center;
+        }
+        h2{
+            padding: 20px;
+            text-align: center;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif !important;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <h1>Ծրագրավորում III Երևան</h1>
+            </tr>
+            <tr>
+            <h1>Մանվել Ասատրյան
+                <br>
+                <h2 id="weather"></h2>
+            </h1>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Գույն</th>
+                <th scope="col">Նկարագրություն</th>
+                <th scope="col">Ծնվել է</th>
+                <th scope="col">Տվյալ Պահին</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td scope="row" style="background-color:green;"></td>
+                <td>Կանաչը խոտն է, որը բազմանում է 7-9 ցիկլը մեկ կախված եղանակից,մահանում է երբ նրան ուտում է խոտակերը, կամ  կոխկրտում են։
+                    Նաև կախված եղանակից նրա գույնները փոխվում են Գարունը՝ կանչ,Ամառը՝ կարմրոտ,Աշունը՝ դեղնին մոտ, իսկ Ձմեռը՝ սպիտակավուն։ 
+                </td>
+                <td id="grassSkizb"></td>
+                <td id="grassCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td scope="row" style="background-color:yellow;"></td>
+                <td>Դեղինը խոտակերն է, որը բազմանում է 1-5 հատ խոտ ուտելուց հետո կախված  եղանակից և մահանում է 10 հատ չուտելուց հետո, կամ
+                    երբ նրան ուտում է գիշատիչը:Նրա գույնը եղանակից կախված չի փոխվում։</td>
+                <td id="grassEaterSkizb"></td>
+                <td id="grassEaterCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td scope="row" style="background-color:red;"></td>
+                <td>Կարմիրը գիշատիչն է, որը բազմանում է 6-8 ցիկլը մեկ,մահանում է երբ նրան ուտում է մարդը,նաև 10 հատ խոտակեր չուտելուց ։
+                    Կախված եղանակից նրա գույնը նույնպես փոխվում է Գարունը՝ կարմիր, իսկ մնացաց եղանակներին մոխրագույնին մոտ գույն ։ </td>
+                <td id="WolfSkizb"></td>
+                <td id="WolfCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td scope="row" style="background-color:blue;"></td>
+                <td>Կապույտը մարդն է, որը բազմանում է 4 ցիկլը մեկ և մահանում երբ նրան ուտում է տրակտորը։
+                    Կախված եղանակից նրա գույնը Ձմռանը կապույտ է , իսկ մյուս եղանակներին  մարմնագույն,նաև Ամռանը նա քայլում է 2 անգամ ավելի քան մնացաց եղանակներին։ 
+                </td>
+                <td id="PeopleSkizb"></td>
+                <td id="PeopleCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td scope="row" style="background-color:orange;"></td>
+                <td>Նարնջագույնը տրակտորն է, որը բազմանում է 4 ցիկլը մեկ,մահանում է երբ չի ուտում 10 մարդու։
+                    Եղանակը նրա վռա ոչ մի ձև չի ազդում։
+                </td>
+                <td id="TractorSkizb"></td>
+                <td id="TractorCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td scope="row" style="background-color:#663300;"></td>
+                <td>Շականակագույնը  Նուտելլա է, որը չի բազմանում այլ առաջանում է տրակտորի շարժվելուց,մահանում է երբ նրան ուտում են բոլորը բացի տրակտորից,սակայն երբ նրան ուտում են տվյալ կերպարի էներգիան պակասում է 1-ով։</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Եղանակ</th>
+                <td scope="row"></td>
+                <td scope="row">Կա 4 Եղանակ Ձմեռ,Գարուն,Ամառ,Աշուն։Եղանակը փոխվում է 16 տակտը մեկ ըստ եղանակի լինում են փոփոխություններ կապված կերպարների հետ այդ փոյոխությունները գրված են կերպարների բնութագրության  մեջ,նաև փոխվում է ետնաշերտի գույնը։</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id = "Spanel" >Spanel</button>
+    <script src="p5.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
